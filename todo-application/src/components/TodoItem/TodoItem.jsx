@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 
 function TodoItem(props) {
-    return(
+
+    const [todoText, setTodoText] = useState(props.text);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const handleInputChange = (event) => {
+        setTodoText(event.target.value);
+      };
+    
+      const handleEdit = () => {
+        setIsEditing(true);
+      };
+    
+      const handleSave = () => {
+        props.onEdit(todoText);
+        setIsEditing(false);
+      };
+
+
+
+      return (
         <div className="todo-item">
-
-            <input type="text" value={props.text} />
-
+          {isEditing ? (
+            <>
+              <input type="text" value={todoText} onChange={handleInputChange} />
+              <button onClick={handleSave}>Save</button>
+            </>
+          ) : (
+            <>
+              <span>{todoText}</span>
+              <button onClick={handleEdit}>Edit</button>
+            </>
+          )}
         </div>
-    )
+      );
 }
 
 export default TodoItem;

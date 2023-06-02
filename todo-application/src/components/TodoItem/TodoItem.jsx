@@ -18,8 +18,6 @@ function TodoItem(props) {
         setIsEditing(false);
       };
 
-
-
       return (
         <div className="todo-item">
           {isEditing ? (

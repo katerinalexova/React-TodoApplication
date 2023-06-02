@@ -27,6 +27,7 @@ function TodoItem(props) {
             </>
           ) : (
             <>
+              <input type="checkbox"/>
               <span>{todoText}</span>
               <button onClick={handleEdit}>Edit</button>
             </>
